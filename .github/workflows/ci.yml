@@ -1,0 +1,31 @@
+name: ci
+
+on: [push, pull_request]
+
+jobs:
+  engine:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -e ".[dev]"
+      - run: ruff check ithamar tests
+      - run: pytest -q
+      - name: Benchmark must have zero false-verified rows
+        run: ithamar bench /tmp/bench --generate 24
+
+  web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - uses: actions/setup-node@v4
+        with: { node-version: "22" }
+      - run: pip install -e ".[dev]"
+      - name: Python and TypeScript engines must agree
+        run: |
+          python scripts/build_samples.py /tmp/samples
+          cd web && npm ci && npx tsc --noEmit && npx tsx scripts/parity.ts /tmp/samples
+      - run: cd web && npm run build

@@ -1,0 +1,703 @@
+{
+ "tool": "ithamar",
+ "version": "0.2.0",
+ "source": "single-column.pdf",
+ "bank": "MERIDIAN UNION BANK",
+ "opening_balance": 17881765,
+ "closing_balance": 63380288,
+ "summary": {
+  "rows": 30,
+  "verified": 28,
+  "repaired": 2,
+  "broken": 0,
+  "unchecked": 0,
+  "closing_ok": true,
+  "anchor": "opening",
+  "clean": true
+ },
+ "rows": [
+  {
+   "index": 0,
+   "date": "2026-04-02",
+   "narration": "ACH D- ASHOKA INFRA PVT LTD-5627774",
+   "debit": 181327,
+   "credit": null,
+   "balance": 17700438,
+   "value_date": null,
+   "ref": "",
+   "page": 0,
+   "status": "verified",
+   "decoded": {
+    "rail": "ACH",
+    "vpa": "",
+    "rrn": "",
+    "utr": "",
+    "ifsc": "",
+    "cheque": "",
+    "counterparty": "Ashoka Infra Pvt Ltd"
+   }
+  },
+  {
+   "index": 1,
+   "date": "2026-04-02",
+   "narration": "UPI/245378965651/SHARED BILL/sneha.khan@upi/SNEHA KHAN",
+   "debit": null,
+   "credit": 16364109,
+   "balance": 34064547,
+   "value_date": null,
+   "ref": "",
+   "page": 0,
+   "status": "verified",
+   "decoded": {
+    "rail": "UPI",
+    "vpa": "sneha.khan@upi",
+    "rrn": "245378965651",
+    "utr": "",
+    "ifsc": "",
+    "cheque": "",
+    "counterparty": "Sneha Khan"
+   }
+  },
+  {
+   "index": 2,
+   "date": "2026-04-03",
+   "narration": "GST ON CHGS",
+   "debit": 147287,
+   "credit": null,
+   "balance": 33917260,
+   "value_date": null,
+   "ref": "",
+   "page": 0,
+   "status": "verified",
+   "decoded": {
+    "rail": "CHARGES",
+    "vpa": "",
+    "rrn": "",
+    "utr": "",
+    "ifsc": "",
+    "cheque": "",
+    "counterparty": ""
+   }
+  },
+  {
+   "index": 3,
+   "date": "2026-04-05",
+   "narration": "NEFT CR-KONK0248630-MERIDIAN SOFTWARE LLP-KONKN738894774300",
+   "debit": null,
+   "credit": 12183851,
+   "balance": 46101111,
+   "value_date": null,
+   "ref": "",
+   "page": 0,
+   "status": "repaired",
+   "decoded": {
+    "rail": "NEFT",
+    "vpa": "",
+    "rrn": "738894774300",
+    "utr": "KONKN738894774300",
+    "ifsc": "KONK0248630",
+    "cheque": "",
+    "counterparty": "Meridian Software Llp"
+   }
+  },
+  {
+   "index": 4,
+   "date": "2026-04-05",
+   "narration": "ACH D- ASHOKA INFRA PVT LTD-7028911",
+   "debit": 195004,
+   "credit": null,
+   "balance": 45906107,
+   "value_date": null,
+   "ref": "",
+   "page": 0,
+   "status": "verified",
+   "decoded": {
+    "rail": "ACH",
+    "vpa": "",
+    "rrn": "",
+    "utr": "",
+    "ifsc": "",
+    "cheque": "",
+    "counterparty": "Ashoka Infra Pvt Ltd"
+   }
+  },
+  {
+   "index": 5,
+   "date": "2026-04-07",
+   "narration": "UPI/813216988075/GROCERIES/lotus25@ybl/LOTUS PHARMACY",
+   "debit": 1867948,
+   "credit": null,
+   "balance": 44038159,
+   "value_date": null,
+   "ref": "",
+   "page": 0,
+   "status": "verified",
+   "decoded": {
+    "rail": "UPI",
+    "vpa": "lotus25@ybl",
+    "rrn": "813216988075",
+    "utr": "",
+    "ifsc": "",
+    "cheque": "",
+    "counterparty": "Lotus Pharmacy"
+   }
+  },
+  {
+   "index": 6,
+   "date": "2026-04-08",
+   "narration": "NEFT DR-MRDN0937611-ASHA JOSHI-MRDNN145923608911",
+   "debit": 4191727,
+   "credit": null,
+   "balance": 39846432,
+   "value_date": null,
+   "ref": "",
+   "page": 0,
+   "status": "verified",
+   "decoded": {
+    "rail": "NEFT",
+    "vpa": "",
+    "rrn": "145923608911",
+    "utr": "MRDNN145923608911",
+    "ifsc": "MRDN0937611",
+    "cheque": "",
+    "counterparty": "Asha Joshi"
+   }
+  },
+  {
+   "index": 7,
+   "date": "2026-04-08",
+   "narration": "IMPS/P2A/635605671109/RAVI JOSHI/MRDN",
+   "debit": null,
+   "credit": 1038879,
+   "balance": 40885311,
+   "value_date": null,
+   "ref": "",
+   "page": 0,
+   "status": "verified",
+   "decoded": {
+    "rail": "IMPS",
+    "vpa": "",
+    "rrn": "635605671109",
+    "utr": "",
+    "ifsc": "",
+    "cheque": "",
+    "counterparty": "Ravi Joshi"
+   }
+  },
+  {
+   "index": 8,
+   "date": "2026-04-08",
+   "narration": "UPI/622015234496/TRANSFER/nizam72@ybl/NIZAM BAKERY",
+   "debit": 764205,
+   "credit": null,
+   "balance": 40121106,
+   "value_date": null,
+   "ref": "",
+   "page": 0,
+   "status": "verified",
+   "decoded": {
+    "rail": "UPI",
+    "vpa": "nizam72@ybl",
+    "rrn": "622015234496",
+    "utr": "",
+    "ifsc": "",
+    "cheque": "",
+    "counterparty": "Nizam Bakery"
+   }
+  },
+  {
+   "index": 9,
+   "date": "2026-04-10",
+   "narration": "UPI/052820321751/PAYMENT/sneha.iyer@upi/SNEHA IYER",
+   "debit": 2728668,
+   "credit": null,
+   "balance": 37392438,
+   "value_date": null,
+   "ref": "",
+   "page": 0,
+   "status": "verified",
+   "decoded": {
+    "rail": "UPI",
+    "vpa": "sneha.iyer@upi",
+    "rrn": "052820321751",
+    "utr": "",
+    "ifsc": "",
+    "cheque": "",
+    "counterparty": "Sneha Iyer"
+   }
+  },
+  {
+   "index": 10,
+   "date": "2026-04-13",
+   "narration": "UPI/690801928586/GROCERIES/lakshmi.rao@paytm/LAKSHMI RAO",
+   "debit": null,
+   "credit": 11222405,
+   "balance": 48614843,
+   "value_date": null,
+   "ref": "",
+   "page": 0,
+   "status": "verified",
+   "decoded": {
+    "rail": "UPI",
+    "vpa": "lakshmi.rao@paytm",
+    "rrn": "690801928586",
+    "utr": "",
+    "ifsc": "",
+    "cheque": "",
+    "counterparty": "Lakshmi Rao"
+   }
+  },
+  {
+   "index": 11,
+   "date": "2026-04-14",
+   "narration": "UPI/184156294011/FEES/lakshmi.das@ybl/LAKSHMI DAS",
+   "debit": null,
+   "credit": 268461,
+   "balance": 48883304,
+   "value_date": null,
+   "ref": "",
+   "page": 0,
+   "status": "verified",
+   "decoded": {
+    "rail": "UPI",
+    "vpa": "lakshmi.das@ybl",
+    "rrn": "184156294011",
+    "utr": "",
+    "ifsc": "",
+    "cheque": "",
+    "counterparty": "Lakshmi Das"
+   }
+  },
+  {
+   "index": 12,
+   "date": "2026-04-15",
+   "narration": "UPI/084453356276/TRANSFER/naveen.rao@ybl/NAVEEN RAO",
+   "debit": null,
+   "credit": 10052857,
+   "balance": 58936161,
+   "value_date": null,
+   "ref": "",
+   "page": 0,
+   "status": "verified",
+   "decoded": {
+    "rail": "UPI",
+    "vpa": "naveen.rao@ybl",
+    "rrn": "084453356276",
+    "utr": "",
+    "ifsc": "",
+    "cheque": "",
+    "counterparty": "Naveen Rao"
+   }
+  },
+  {
+   "index": 13,
+   "date": "2026-04-17",
+   "narration": "POS 4082XXXXXXXX9141 MOOSI HARDWARE",
+   "debit": 4243854,
+   "credit": null,
+   "balance": 54692307,
+   "value_date": null,
+   "ref": "",
+   "page": 0,
+   "status": "verified",
+   "decoded": {
+    "rail": "CARD",
+    "vpa": "",
+    "rrn": "",
+    "utr": "",
+    "ifsc": "",
+    "cheque": "",
+    "counterparty": ""
+   }
+  },
+  {
+   "index": 14,
+   "date": "2026-04-19",
+   "narration": "ATM WDL/610112/HYDERABAD",
+   "debit": 5694534,
+   "credit": null,
+   "balance": 48997773,
+   "value_date": null,
+   "ref": "",
+   "page": 0,
+   "status": "verified",
+   "decoded": {
+    "rail": "ATM",
+    "vpa": "",
+    "rrn": "",
+    "utr": "",
+    "ifsc": "",
+    "cheque": "",
+    "counterparty": ""
+   }
+  },
+  {
+   "index": 15,
+   "date": "2026-04-21",
+   "narration": "IMPS/P2A/539086380152/JOSEPH KUMAR/KONK",
+   "debit": null,
+   "credit": 1376763,
+   "balance": 50374536,
+   "value_date": null,
+   "ref": "",
+   "page": 0,
+   "status": "verified",
+   "decoded": {
+    "rail": "IMPS",
+    "vpa": "",
+    "rrn": "539086380152",
+    "utr": "",
+    "ifsc": "",
+    "cheque": "",
+    "counterparty": "Joseph Kumar"
+   }
+  },
+  {
+   "index": 16,
+   "date": "2026-04-24",
+   "narration": "IMPS/P2A/422291082980/JOSEPH KUMAR/SHFL",
+   "debit": 61402,
+   "credit": null,
+   "balance": 50313134,
+   "value_date": null,
+   "ref": "",
+   "page": 0,
+   "status": "verified",
+   "decoded": {
+    "rail": "IMPS",
+    "vpa": "",
+    "rrn": "422291082980",
+    "utr": "",
+    "ifsc": "",
+    "cheque": "",
+    "counterparty": "Joseph Kumar"
+   }
+  },
+  {
+   "index": 17,
+   "date": "2026-04-26",
+   "narration": "NEFT DR-SHFL0534423-JOSEPH DAS-SHFLN484368779072",
+   "debit": 132879,
+   "credit": null,
+   "balance": 50180255,
+   "value_date": null,
+   "ref": "",
+   "page": 0,
+   "status": "verified",
+   "decoded": {
+    "rail": "NEFT",
+    "vpa": "",
+    "rrn": "484368779072",
+    "utr": "SHFLN484368779072",
+    "ifsc": "SHFL0534423",
+    "cheque": "",
+    "counterparty": "Joseph Das"
+   }
+  },
+  {
+   "index": 18,
+   "date": "2026-04-27",
+   "narration": "UPI/302854836840/SHARED BILL/arjun.joshi@okaxis/ARJUN JOSHI",
+   "debit": 236473,
+   "credit": null,
+   "balance": 49943782,
+   "value_date": null,
+   "ref": "",
+   "page": 0,
+   "status": "verified",
+   "decoded": {
+    "rail": "UPI",
+    "vpa": "arjun.joshi@okaxis",
+    "rrn": "302854836840",
+    "utr": "",
+    "ifsc": "",
+    "cheque": "",
+    "counterparty": "Arjun Joshi"
+   }
+  },
+  {
+   "index": 19,
+   "date": "2026-04-27",
+   "narration": "UPI/022003692617/TRANSFER/moosi16@paytm/MOOSI HARDWARE",
+   "debit": 2031616,
+   "credit": null,
+   "balance": 47912166,
+   "value_date": null,
+   "ref": "",
+   "page": 0,
+   "status": "verified",
+   "decoded": {
+    "rail": "UPI",
+    "vpa": "moosi16@paytm",
+    "rrn": "022003692617",
+    "utr": "",
+    "ifsc": "",
+    "cheque": "",
+    "counterparty": "Moosi Hardware"
+   }
+  },
+  {
+   "index": 20,
+   "date": "2026-04-30",
+   "narration": "UPI/449864431120/RENT/priya.iyer@oksbi/PRIYA IYER",
+   "debit": null,
+   "credit": 7614533,
+   "balance": 55526699,
+   "value_date": null,
+   "ref": "",
+   "page": 0,
+   "status": "verified",
+   "decoded": {
+    "rail": "UPI",
+    "vpa": "priya.iyer@oksbi",
+    "rrn": "449864431120",
+    "utr": "",
+    "ifsc": "",
+    "cheque": "",
+    "counterparty": "Priya Iyer"
+   }
+  },
+  {
+   "index": 21,
+   "date": "2026-05-02",
+   "narration": "UPI/986273755107/GROCERIES/suresh.menon@okaxis/SURESH MENON",
+   "debit": 5272849,
+   "credit": null,
+   "balance": 50253850,
+   "value_date": null,
+   "ref": "",
+   "page": 0,
+   "status": "verified",
+   "decoded": {
+    "rail": "UPI",
+    "vpa": "suresh.menon@okaxis",
+    "rrn": "986273755107",
+    "utr": "",
+    "ifsc": "",
+    "cheque": "",
+    "counterparty": "Suresh Menon"
+   }
+  },
+  {
+   "index": 22,
+   "date": "2026-05-03",
+   "narration": "IMPS/P2A/235266055553/PRIYA RAO/KONK",
+   "debit": null,
+   "credit": 633928,
+   "balance": 50887778,
+   "value_date": null,
+   "ref": "",
+   "page": 0,
+   "status": "verified",
+   "decoded": {
+    "rail": "IMPS",
+    "vpa": "",
+    "rrn": "235266055553",
+    "utr": "",
+    "ifsc": "",
+    "cheque": "",
+    "counterparty": "Priya Rao"
+   }
+  },
+  {
+   "index": 23,
+   "date": "2026-05-05",
+   "narration": "UPI/768329606656/TRANSFER/vikram.iyer@okaxis/VIKRAM IYER",
+   "debit": null,
+   "credit": 3451293,
+   "balance": 54339071,
+   "value_date": null,
+   "ref": "",
+   "page": 0,
+   "status": "repaired",
+   "decoded": {
+    "rail": "UPI",
+    "vpa": "vikram.iyer@okaxis",
+    "rrn": "768329606656",
+    "utr": "",
+    "ifsc": "",
+    "cheque": "",
+    "counterparty": "Vikram Iyer"
+   }
+  },
+  {
+   "index": 24,
+   "date": "2026-05-05",
+   "narration": "POS 4027XXXXXXXX4951 TANK BUND STATIONERS",
+   "debit": 220631,
+   "credit": null,
+   "balance": 54118440,
+   "value_date": null,
+   "ref": "",
+   "page": 1,
+   "status": "verified",
+   "decoded": {
+    "rail": "CARD",
+    "vpa": "",
+    "rrn": "",
+    "utr": "",
+    "ifsc": "",
+    "cheque": "",
+    "counterparty": ""
+   }
+  },
+  {
+   "index": 25,
+   "date": "2026-05-05",
+   "narration": "UPI/769273696066/PAYMENT/tank36@okaxis/TANK BUND STATIONERS",
+   "debit": 3182929,
+   "credit": null,
+   "balance": 50935511,
+   "value_date": null,
+   "ref": "",
+   "page": 1,
+   "status": "verified",
+   "decoded": {
+    "rail": "UPI",
+    "vpa": "tank36@okaxis",
+    "rrn": "769273696066",
+    "utr": "",
+    "ifsc": "",
+    "cheque": "",
+    "counterparty": "Tank Bund Stationers"
+   }
+  },
+  {
+   "index": 26,
+   "date": "2026-05-08",
+   "narration": "UPI/827177971888/FEES/ravi.reddy@ibl/RAVI REDDY",
+   "debit": null,
+   "credit": 14647698,
+   "balance": 65583209,
+   "value_date": null,
+   "ref": "",
+   "page": 1,
+   "status": "verified",
+   "decoded": {
+    "rail": "UPI",
+    "vpa": "ravi.reddy@ibl",
+    "rrn": "827177971888",
+    "utr": "",
+    "ifsc": "",
+    "cheque": "",
+    "counterparty": "Ravi Reddy"
+   }
+  },
+  {
+   "index": 27,
+   "date": "2026-05-11",
+   "narration": "UPI/837706034782/SHARED BILL/kiran.rao@upi/KIRAN RAO",
+   "debit": null,
+   "credit": 2959266,
+   "balance": 68542475,
+   "value_date": null,
+   "ref": "",
+   "page": 1,
+   "status": "verified",
+   "decoded": {
+    "rail": "UPI",
+    "vpa": "kiran.rao@upi",
+    "rrn": "837706034782",
+    "utr": "",
+    "ifsc": "",
+    "cheque": "",
+    "counterparty": "Kiran Rao"
+   }
+  },
+  {
+   "index": 28,
+   "date": "2026-05-11",
+   "narration": "UPI/370931711916/RENT/daniel.menon@oksbi/DANIEL MENON",
+   "debit": null,
+   "credit": 329741,
+   "balance": 68872216,
+   "value_date": null,
+   "ref": "",
+   "page": 1,
+   "status": "verified",
+   "decoded": {
+    "rail": "UPI",
+    "vpa": "daniel.menon@oksbi",
+    "rrn": "370931711916",
+    "utr": "",
+    "ifsc": "",
+    "cheque": "",
+    "counterparty": "Daniel Menon"
+   }
+  },
+  {
+   "index": 29,
+   "date": "2026-05-13",
+   "narration": "UPI/752792239891/RENT/daniel.menon@ybl/DANIEL MENON",
+   "debit": 5491928,
+   "credit": null,
+   "balance": 63380288,
+   "value_date": null,
+   "ref": "",
+   "page": 1,
+   "status": "verified",
+   "decoded": {
+    "rail": "UPI",
+    "vpa": "daniel.menon@ybl",
+    "rrn": "752792239891",
+    "utr": "",
+    "ifsc": "",
+    "cheque": "",
+    "counterparty": "Daniel Menon"
+   }
+  }
+ ],
+ "breaks": [],
+ "repairs": [
+  {
+   "row": 3,
+   "break_at": 3,
+   "kind": "amount_misread",
+   "before": {
+    "credit": 12183821
+   },
+   "after": {
+    "credit": 12183851
+   },
+   "detail": "credit reads 1,21,838.21; the balances need 1,21,838.51",
+   "rejected": [
+    {
+     "kind": "missing_row",
+     "row": 3,
+     "fix": {
+      "insert_before": 3,
+      "net": 30
+     },
+     "detail": "a credit of 0.30 may be missing above this row"
+    }
+   ]
+  },
+  {
+   "row": 23,
+   "break_at": 23,
+   "kind": "direction_swapped",
+   "before": {
+    "debit": 3451293,
+    "credit": null
+   },
+   "after": {
+    "debit": null,
+    "credit": 3451293
+   },
+   "detail": "34,512.93 is a credit, not a debit",
+   "rejected": [
+    {
+     "kind": "missing_row",
+     "row": 23,
+     "fix": {
+      "insert_before": 23,
+      "net": 6902586
+     },
+     "detail": "a credit of 69,025.86 may be missing above this row"
+    }
+   ]
+  }
+ ],
+ "unresolved": [],
+ "warnings": []
+}
