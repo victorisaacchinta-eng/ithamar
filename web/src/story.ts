@@ -20,7 +20,7 @@ interface Timeline { kind: "plain" | "repaired" | "echo" | "left"; brokenAt: num
 const clamp = (v: number, a: number, b: number) => Math.min(b, Math.max(a, v));
 
 export async function mountStory(root: HTMLElement): Promise<() => void> {
-  const audit: PyAudit = await (await fetch("/samples/story.audit.json")).json();
+  const audit: PyAudit = await (await fetch("samples/story.audit.json")).json();
   const final = audit.rows;
   // What the PDF actually printed: undo each logged repair.
   const printed = final.map((r) => ({ ...r }));

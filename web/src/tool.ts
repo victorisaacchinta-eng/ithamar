@@ -110,7 +110,7 @@ export function mountTool() {
     b.addEventListener("click", async () => {
       const name = b.dataset.sample!;
       say(`Fetching the sample statement`);
-      const res = await fetch(`/samples/${name}.pdf`);
+      const res = await fetch(`samples/${name}.pdf`);
       await run(new Uint8Array(await res.arrayBuffer()), `${name}.pdf`);
     }),
   );
