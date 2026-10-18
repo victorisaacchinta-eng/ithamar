@@ -70,7 +70,7 @@ export async function mountStory(root: HTMLElement): Promise<() => void> {
     if (u) {
       const gap = el("div", "ledger-row gap-row");
       const net = u.candidates[0]?.fix.net ?? 0;
-      gap.append(el("span", "l-date"), el("span", "l-part", "A row is missing here. Not entered."),
+      gap.append(el("span", "l-date"), el("span", "l-part", "A row is missing here"),
         net < 0 ? moneyCell(-net) : el("span"), net > 0 ? moneyCell(net) : el("span"), el("span"), el("span", "mark"));
       gap.setAttribute("aria-hidden", "true");
       body.append(gap);
@@ -122,9 +122,11 @@ export async function mountStory(root: HTMLElement): Promise<() => void> {
   function rowState(i: number, p: number) {
     const t = tl[i];
     const fixed = t.kind === "repaired" && p >= t.fixAt;
-    const broken = p >= t.brokenAt && !fixed;
+    // A break shows from the moment the pen reaches it until its fix lands.
+    // Echo rows are never repaired themselves; they close once the row above is fixed.
+    const broken = p >= t.brokenAt && p < t.fixAt;
     const proven = p >= t.provenAt && (t.kind === "plain" || t.kind === "echo");
-    return { fixed, broken: broken || (t.kind === "left" && p >= t.brokenAt), proven };
+    return { fixed, broken, proven };
   }
 
   function equation(i: number, p: number) {

@@ -226,6 +226,7 @@ h1, h2, h3 { margin: 0; font-weight: 400; text-wrap: balance; }
 .tally > div span:last-child { font-family: var(--sans); font-size: 14px; color: var(--ink-soft); }
 .tally > div:nth-child(1) .tally-n, .tally > div:nth-child(2) .tally-n { color: var(--blue); }
 .tally > div:nth-child(3) .tally-n { color: var(--red-ink); }
+.tally::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 48px; pointer-events: none; background: linear-gradient(var(--paper), transparent); }
 .tally-of { margin: 8px 0 0; font-family: var(--sans); font-size: 13px; color: var(--ink-faint); }
 .step { min-height: 92svh; display: flex; flex-direction: column; justify-content: center; max-width: 44ch; }
 .step h3 { font-size: clamp(26px, 2.4vw, 36px); line-height: 1.12; letter-spacing: -0.01em; margin-bottom: 0.6em; font-variation-settings: "opsz" 72, "SOFT" 50; }
