@@ -49,8 +49,8 @@ export async function mountStory(root: HTMLElement): Promise<() => void> {
   // ---------------------------------------------------------------- build the page
   root.replaceChildren();
   const head = el("header", "ledger-head");
-  head.append(el("h3", "", "N. Joseph, savings account"), el("p", "folio", "Folio 4"),
-    el("p", "", `${titleCase(audit.bank)}, a fictional bank. April 2026.`));
+  head.append(el("h3", "", "N. Joseph, savings account"), el("p", "folio", "April 2026"),
+    el("p", "", `${titleCase(audit.bank)}, a fictional bank`));
   const win = el("div", "ledger-window");
   const body = el("div", "ledger-body");
   const ruler = el("div", "ruler");
@@ -111,8 +111,7 @@ export async function mountStory(root: HTMLElement): Promise<() => void> {
 
   const eq = el("footer", "ledger-eq");
   eq.setAttribute("aria-live", "polite");
-  const stamp = el("div", "stamp", "One row needs you");
-  root.append(head, headRow(), win, eq, stamp);
+  root.append(head, headRow(), win, eq);
 
   // ---------------------------------------------------------------- render from the pen
   const steps = [...document.querySelectorAll<HTMLElement>(".story .step")];
@@ -163,7 +162,6 @@ export async function mountStory(root: HTMLElement): Promise<() => void> {
     });
     const gapOpen = [...left.keys()].some((r) => p >= tl[r].brokenAt);
     gapEl?.classList.toggle("is-open", gapOpen);
-    stamp.classList.toggle("is-on", p >= N + 0.4);
 
     const cur = Math.min(Math.floor(clamp(p, 0, N)), N);
     const target = cur >= N ? cf : rowEls[cur];

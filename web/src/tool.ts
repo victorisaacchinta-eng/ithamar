@@ -3,6 +3,7 @@ import { auditWords, type Audit } from "./engine/audit";
 import { fmtInr } from "./engine/money";
 import { wordsFromPages, type PageLike } from "./engine/pdf";
 import { el, headRow, markSvg, moneyCell, particulars, rulesLayer, shortDate } from "./ledger";
+import { engrave, mountSeal, type SealStatus } from "./seal";
 
 type PdfJs = typeof import("pdfjs-dist");
 let pdfjsPromise: Promise<PdfJs> | null = null;
@@ -119,11 +120,11 @@ export function mountTool() {
   if (m) document.querySelector<HTMLButtonElement>(`[data-sample="${m[1]}"]`)?.click();
 }
 
-function verdict(a: Audit): { text: string; blue: boolean; heading: string } {
+function verdict(a: Audit): { text: string; tone: "whole" | "repaired" | "broken"; heading: string } {
   const s = a.summary;
-  if (s.clean && !s.repaired) return { text: "Proven", blue: true, heading: `Every row of ${a.source} is proven.` };
-  if (s.clean) return { text: "Proven after repair", blue: true, heading: `${a.source} is proven, after ${s.repaired} logged ${s.repaired === 1 ? "correction" : "corrections"}.` };
-  return { text: s.broken === 1 ? "One row needs you" : `${s.broken} rows need you`, blue: false, heading: `${a.source} needs a look at ${s.broken} ${s.broken === 1 ? "row" : "rows"}.` };
+  if (s.clean && !s.repaired) return { text: "Seal whole", tone: "whole", heading: `Every row of ${a.source} is proven.` };
+  if (s.clean) return { text: "Seal whole, after repair", tone: "repaired", heading: `${a.source} is proven, after ${s.repaired} logged ${s.repaired === 1 ? "correction" : "corrections"}.` };
+  return { text: s.broken === 1 ? "Seal broken: one row needs you" : `Seal broken: ${s.broken} rows need you`, tone: "broken", heading: `${a.source} needs a look at ${s.broken} ${s.broken === 1 ? "row" : "rows"}.` };
 }
 
 function renderResult(root: HTMLElement, a: Audit) {
@@ -143,13 +144,17 @@ function renderResult(root: HTMLElement, a: Audit) {
   const csv = el("button", "btn btn-ink", "Download CSV");
   csv.type = "button";
   csv.addEventListener("click", () => download(toCsv(a), a.source.replace(/\.pdf$/i, "") + "-ithamar.csv", "text/csv"));
-  const json = el("button", "btn-quiet", "Download the audit as JSON");
+  const json = el("button", "btn-text", "Download the audit as JSON");
   json.type = "button";
   json.addEventListener("click", () => download(JSON.stringify(a, null, 1), a.source.replace(/\.pdf$/i, "") + "-ithamar.json", "application/json"));
   actions.append(csv, json);
   left.append(actions);
-  const stamp = el("div", `stamp${v.blue ? " is-blue" : ""}`, v.text);
-  head.append(left, stamp);
+  const fig = el("figure", `result-seal is-${v.tone}`);
+  const canvas = el("canvas", "seal");
+  canvas.setAttribute("role", "img");
+  canvas.setAttribute("aria-label", `The seal of ${a.source}, drawn from its ${s.rows} balances. ${v.text}.`);
+  fig.append(canvas, el("figcaption", "", v.text));
+  head.append(left, fig);
 
   const ledger = el("div", "ledger");
   const lh = el("header", "ledger-head");
@@ -213,6 +218,10 @@ function renderResult(root: HTMLElement, a: Audit) {
   }
   root.append(head, ledger);
   if (notes.children.length) root.append(notes);
+  requestAnimationFrame(() => {
+    const seal = mountSeal(canvas, a.rows.map((r) => ({ balance: r.balance, status: r.status as SealStatus })));
+    engrave(seal, 1400);
+  });
 }
 
 function toCsv(a: Audit): string {

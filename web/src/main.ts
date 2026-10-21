@@ -1,25 +1,12 @@
-import "./fonts.css";
+import "@fontsource-variable/hubot-sans/standard.css";
+import "@fontsource-variable/mona-sans/standard.css";
+import "@fontsource-variable/martian-mono/standard.css";
 import "./styles.css";
 import { mountStory } from "./story";
 import { mountTool } from "./tool";
+import { engrave, mountSeal, type SealStatus } from "./seal";
 
-const reduced = matchMedia("(prefers-reduced-motion: reduce)");
 const nav = document.querySelector<HTMLElement>(".nav")!;
-const book = document.querySelector<HTMLElement>(".book")!;
-const cover = document.querySelector<HTMLElement>(".cover")!;
-
-// The cover hinges open on its spine as the first screen scrolls away.
-function openCover() {
-  const span = book.offsetHeight - window.innerHeight;
-  const c = Math.min(1, Math.max(0, window.scrollY / Math.max(span * 0.62, 1)));
-  if (!reduced.matches) {
-    const eased = c < 0.5 ? 2 * c * c : 1 - Math.pow(-2 * c + 2, 2) / 2;
-    cover.style.transform = `rotateY(${-104 * eased}deg)`;
-    cover.style.visibility = c >= 1 ? "hidden" : "visible";
-  }
-  cover.inert = c > 0.55;
-  nav.dataset.solid = String(c > 0.5 || reduced.matches && window.scrollY > window.innerHeight * 0.9);
-}
 
 let storyUpdate: (() => void) | null = null;
 let queued = false;
@@ -28,16 +15,31 @@ function onScroll() {
   queued = true;
   requestAnimationFrame(() => {
     queued = false;
-    openCover();
+    nav.dataset.scrolled = String(window.scrollY > 8);
     storyUpdate?.();
   });
 }
-
-openCover();
 window.addEventListener("scroll", onScroll, { passive: true });
 window.addEventListener("resize", onScroll);
-reduced.addEventListener("change", () => { cover.style.transform = ""; onScroll(); });
 
+// The hero seal is the sample statement's own: drawn from the same audit the story walks through.
+async function mountHeroSeal() {
+  const canvas = document.getElementById("hero-seal") as HTMLCanvasElement | null;
+  if (!canvas) return;
+  const audit = await (await fetch("samples/story.audit.json")).json();
+  const rows = (audit.rows as { balance: number | null; status: SealStatus }[]).map((r) => ({ balance: r.balance, status: r.status }));
+  await document.fonts.ready;
+  const seal = mountSeal(canvas, rows);
+  engrave(seal, 1800);
+  let t = 0, first = true;
+  new ResizeObserver(() => {
+    if (first) { first = false; return; }
+    clearTimeout(t);
+    t = window.setTimeout(() => { seal.resize(); seal.draw(1); }, 120);
+  }).observe(canvas);
+}
+
+mountHeroSeal();
 mountStory(document.getElementById("story-ledger")!).then((u) => {
   storyUpdate = u;
   u();

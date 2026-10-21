@@ -20,7 +20,9 @@ Ithamar reads a statement PDF, walks that equation down the page, and marks each
 
 It never guesses, and it never invents a transaction.
 
-**Try it in the browser:** the site parses and proves a PDF entirely inside your tab. Nothing is uploaded; there is no server.
+**Try it in the browser at [ithamar.vercel.app](https://ithamar.vercel.app):** the site parses and proves a PDF entirely inside your tab. Nothing is uploaded; there is no server. Each audited statement also gets a **seal**: a guilloche rosette, like the security printing on a cheque, drawn from that statement's own balances. Every row owns a slice of it. Proven rows draw clean, repaired rows draw in violet, and a row that does not balance prints out of register in magenta, exactly where it broke.
+
+![An audited statement and its seal](docs/tool.png)
 
 ![The audit, walked by the pen](docs/story.png)
 

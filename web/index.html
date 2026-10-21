@@ -5,86 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Ithamar: bank statements, proven row by row</title>
   <meta name="description" content="Ithamar extracts Indian bank statement PDFs and proves every row against the statement's own running balance. Open source. Runs in your browser; your file never leaves the tab.">
-  <meta name="theme-color" content="#233A31">
+  <meta name="theme-color" content="#DCEAED">
   <meta property="og:title" content="Ithamar: bank statements, proven row by row">
-  <meta property="og:description" content="Every row of an Indian bank statement, checked against its own running balance. Open source, and it runs entirely in your browser.">
+  <meta property="og:description" content="Every row of an Indian bank statement, checked against its own running balance. Each statement gets a seal that shows where the arithmetic broke. Open source, and it runs entirely in your browser.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="og.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..800,0..100,0..1;1,9..144,300..800,0..100,0..1&display=swap">
 </head>
 <body>
   <a class="skip" href="#audit">Skip to the audit tool</a>
 
-  <nav class="nav" aria-label="Primary">
-    <a class="nav-mark" href="#top">Ithamar</a>
-    <div class="nav-links">
+  <header class="nav">
+    <a class="nav-mark" href="#top" aria-label="Ithamar, back to top">Ithamar</a>
+    <nav class="nav-links" aria-label="Primary">
       <a href="#how">How it proves</a>
       <a href="#audit">Audit a statement</a>
       <a href="https://github.com/victorisaacchinta-eng/ithamar" rel="noopener">Source</a>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
   <main id="top">
-    <!-- The book. Scrolling opens the cover on its spine. -->
-    <section class="book" aria-label="Introduction">
-      <div class="book-stage">
-        <div class="page page-first">
-          <p class="page-folio">Folio 1</p>
-          <h2 class="thesis">A bank statement already contains its own proof.</h2>
-          <div class="equation" role="img" aria-label="Balance brought forward, plus credit, minus debit, equals balance">
-            <span class="term"><span class="term-sym">Balance above</span></span>
-            <span class="op">+</span>
-            <span class="term"><span class="term-sym">Credit</span></span>
-            <span class="op">&minus;</span>
-            <span class="term"><span class="term-sym">Debit</span></span>
-            <span class="op">=</span>
-            <span class="term term-total"><span class="term-sym">Balance</span></span>
-          </div>
-          <ul class="legend" aria-label="The three marks used in the audit">
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path class="tick" d="M5 12.5l4.2 4.3L19.5 6.5"/></svg><span><b>Proven</b> as printed. The arithmetic holds.</span></li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path class="redo" d="M18.5 9.5A7 7 0 1 0 19 14.5M19 4.5v5h-5"/></svg><span><b>Repaired</b>, and the change is logged next to the row.</span></li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path class="ring" d="M12 3.5c4.8 0 8.4 3.6 8.4 8.3 0 4.6-3.8 8.5-8.5 8.5S3.5 16.6 3.6 12c.1-4.7 3.9-8.3 8.9-8.4"/></svg><span><b>Left for you</b>, with what it found.</span></li>
-          </ul>
-          <p class="page-lede">Ithamar reads an Indian bank statement PDF, then checks every row against that one line of arithmetic. A row that holds is proven. A row that does not is explained, corrected only when the correction is earned, or handed to you.</p>
-        </div>
-
-        <div class="cover" aria-hidden="false">
-          <div class="cover-spine" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-          <div class="cover-corner cover-corner-top" aria-hidden="true"></div>
-          <div class="cover-corner cover-corner-bottom" aria-hidden="true"></div>
-          <div class="cover-face">
-            <div class="label">
-              <h1 class="label-title">Ithamar</h1>
-              <p class="label-sub">Accounts proven, row by row</p>
-              <p class="label-note">For Indian bank statements. Open source, and it runs entirely in your browser.</p>
-            </div>
-            <div class="cover-actions">
-              <a class="btn btn-paper" href="#audit">Audit a statement</a>
-              <a class="btn-quiet" href="#how">See how it proves</a>
-            </div>
-            <p class="cover-blind" aria-hidden="true">Exodus 38:21</p>
+    <!-- The leaf. A cheque tint, a seal, and a clear band at the foot. -->
+    <section class="leaf" aria-labelledby="title">
+      <div class="leaf-grid">
+        <h1 id="title" class="leaf-word">Ithamar<span class="visually-hidden">: bank statements, proven row by row</span></h1>
+        <div class="leaf-copy">
+          <p class="leaf-deck" aria-hidden="true">Bank statements, proven row by row.</p>
+          <p class="leaf-lede">Drop in an Indian bank statement PDF. Ithamar reads every row and checks it against the statement's own running balance. A row that holds is proven. A row that does not is explained, repaired only when the repair is earned, or handed to you. It all happens in this tab; nothing is uploaded.</p>
+          <div class="leaf-actions">
+            <a class="btn btn-ink" href="#audit">Audit a statement</a>
+            <a class="btn-text" href="#how">See how it proves</a>
           </div>
         </div>
+        <figure class="leaf-seal">
+          <canvas id="hero-seal" class="seal" role="img" aria-label="A guilloche seal drawn from the sample statement's 23 balances. Three slices are violet, for repaired rows. One slice is magenta and out of register, for the row that does not balance."></canvas>
+          <figcaption>The seal of the sample statement below, drawn from its own 23 balances. Violet slices are rows Ithamar repaired. The magenta slip is the one row it refused to invent.</figcaption>
+        </figure>
       </div>
+      <p class="band" aria-label="Sample statement: 23 rows, 19 proven as printed, 3 repaired, 1 left for you">
+        <span>23 rows</span><span>19 proven</span><span>3 repaired</span><span>1 left for you</span><span class="band-sum">Closing balance 4,04,878.87 matches</span>
+      </p>
     </section>
 
-    <!-- The audit, walked by the pen. -->
+    <!-- The audit, walked row by row as you scroll. -->
     <section class="story" id="how" aria-labelledby="story-title">
       <h2 id="story-title" class="visually-hidden">How Ithamar proves a statement</h2>
       <div class="story-steps">
         <div class="tally" id="tally" aria-hidden="true">
-          <div><span class="tally-n" data-k="proven">0</span><span>proven as printed</span></div>
-          <div><span class="tally-n" data-k="repaired">0</span><span>repaired, with the change logged</span></div>
-          <div><span class="tally-n" data-k="left">0</span><span>left for a person</span></div>
-          <p class="tally-of">of 23 rows checked so far: <span data-k="seen">0</span></p>
+          <div class="tally-row"><span class="tally-n" data-k="proven">0</span><span>proven as printed</span></div>
+          <div class="tally-row is-repair"><span class="tally-n" data-k="repaired">0</span><span>repaired, change logged</span></div>
+          <div class="tally-row is-left"><span class="tally-n" data-k="left">0</span><span>left for a person</span></div>
+          <p class="tally-of"><span data-k="seen">0</span> of 23 rows checked</p>
         </div>
         <article class="step" data-from="0" data-to="3">
           <h3>Every row obeys one line of arithmetic.</h3>
-          <p>The balance above, plus what came in, minus what went out, equals the balance printed. Ithamar walks that line down the page with a ruler, the way an auditor does. When it holds, the row is ticked as proven. Nothing is guessed.</p>
+          <p>The balance above, plus what came in, minus what went out, equals the balance printed. Ithamar walks that line down the page the way an auditor runs a ruler down a ledger. When it holds, the row is ticked as proven. Nothing is guessed.</p>
         </article>
         <article class="step" data-from="3" data-to="4.2">
           <h3>Row 4 does not add up.</h3>
@@ -100,7 +76,7 @@
         </article>
         <article class="step" data-from="15.2" data-to="19.2">
           <h3>A row is missing. Ithamar will not invent it.</h3>
-          <p>Between the 16th and the 18th, &#8377;1,76,090.10 arrived and no row records it. A missing row can explain any break, which is exactly why it proves nothing. The gap and its amount are handed to you.</p>
+          <p>Between the 16th and the 18th, &#8377;1,76,090.10 arrived and no row records it. A missing row can explain any break, which is exactly why it proves nothing. The gap and its amount are handed to you, printed VOID the way a cheque marks a copy.</p>
         </article>
         <article class="step" data-from="19.2" data-to="24">
           <h3>Carried forward.</h3>
@@ -118,28 +94,28 @@
     <!-- The benchmark. -->
     <section class="proof" aria-labelledby="proof-title">
       <div class="proof-inner">
-        <h2 id="proof-title" class="section-title">Measured against the truth</h2>
-        <div class="total">
-          <p class="total-figure" aria-hidden="true">0</p>
-          <p class="total-caption"><span class="visually-hidden">Zero </span>rows marked proven that were wrong.</p>
+        <div class="proof-figure">
+          <p class="zero" aria-hidden="true">0</p>
+          <h2 id="proof-title" class="proof-title"><span class="visually-hidden">Zero </span>rows marked proven that were wrong.</h2>
         </div>
         <div class="proof-copy">
           <p>Across 24 generated statements, 855 rows and 39 injected errors, in three layouts modelled on Indian banks. Every swapped column, misread digit and misread balance was repaired to its true value. Every missing row was flagged and left alone.</p>
           <p class="proof-caveat">These statements come from Ithamar's own generator, so their truth is known exactly. That proves the verifier. Real bank PDFs are the next test, and the result will be published the same way, failures included.</p>
+          <dl class="facts">
+            <div><dt>63</dt><dd>automated tests, including property tests that try hundreds of random corruptions on every run</dd></div>
+            <div><dt>2</dt><dd>engines that agree row for row: Python for the command line, TypeScript in this page</dd></div>
+            <div><dt>4</dt><dd>kinds of error it can name: a swapped column, a misread amount, a misread balance, a missing row</dd></div>
+          </dl>
         </div>
-        <dl class="facts">
-          <div><dt>63</dt><dd>automated tests, including property tests that try hundreds of random corruptions on every run</dd></div>
-          <div><dt>2</dt><dd>engines that agree row for row: Python for the command line, TypeScript in this page</dd></div>
-          <div><dt>4</dt><dd>kinds of error it can name: a swapped column, a misread amount, a misread balance, a missing row</dd></div>
-        </dl>
       </div>
     </section>
 
     <!-- The tool. -->
+    <div class="tool-wrap">
     <section class="tool" id="audit" aria-labelledby="tool-title">
       <div class="tool-head">
         <h2 id="tool-title" class="section-title">Audit a statement</h2>
-        <p>Your file is read inside this tab. It is never uploaded; there is no server to upload it to.</p>
+        <p>Your file is read inside this tab. It is never uploaded; there is no server to upload it to. When it is done, your statement gets its own seal.</p>
       </div>
 
       <div class="dropzone" id="dropzone">
@@ -160,14 +136,15 @@
 
       <div class="samples">
         <span>No statement to hand? Try one of ours:</span>
-        <button type="button" class="btn-quiet" data-sample="story">Four errors</button>
-        <button type="button" class="btn-quiet" data-sample="clean">A clean one</button>
-        <button type="button" class="btn-quiet" data-sample="single-column">Single amount column</button>
+        <button type="button" class="btn-text" data-sample="story">Four errors</button>
+        <button type="button" class="btn-text" data-sample="clean">A clean one</button>
+        <button type="button" class="btn-text" data-sample="single-column">Single amount column</button>
       </div>
 
       <p class="tool-status" id="tool-status" role="status" aria-live="polite"></p>
       <div class="result" id="result" hidden></div>
     </section>
+    </div>
 
     <!-- The name. -->
     <section class="name" aria-labelledby="name-title">
@@ -177,9 +154,7 @@
           <p>This is the sum of the tabernacle, even of the tabernacle of testimony, as it was counted, according to the commandment of Moses, for the service of the Levites, by the hand of Ithamar, son to Aaron the priest.</p>
           <cite>Exodus 38:21, King James Version</cite>
         </blockquote>
-        <div class="name-copy">
-          <p>The first audit in the record was kept by Ithamar. Its silver can still be checked. Exodus 38 counts 603,550 men giving half a shekel each, and separately reports the total as 100 talents and 1,775 shekels. At 3,000 shekels to the talent, the two agree.</p>
-        </div>
+        <p class="name-copy">The first audit in the record was kept by Ithamar, and its silver can still be checked. Exodus 38 counts 603,550 men giving half a shekel each, and separately reports the total as 100 talents and 1,775 shekels. At 3,000 shekels to the talent, the two records agree.</p>
         <div class="sum" role="table" aria-label="The silver of Exodus 38, worked as a ledger sum">
           <div class="sum-row" role="row"><span role="cell">603,550 men at half a shekel</span><span role="cell" class="sum-fig">301,775</span></div>
           <div class="sum-row" role="row"><span role="cell">100 talents at 3,000 shekels</span><span role="cell" class="sum-fig">300,000</span></div>
@@ -195,12 +170,12 @@
         <div class="cli-copy">
           <h2 id="cli-title" class="section-title">Run it on your machine</h2>
           <p>The same engine ships as a Python command. It exits 0 when every row is proven, 1 when rows were repaired, and 2 when a person needs to look, so it can guard a script.</p>
-          <dl class="limits">
-            <dt>Not yet</dt>
-            <dd>Scanned statements, which need OCR.</dd>
-            <dd>Statements that print no running balance: those rows stay unchecked rather than pretend.</dd>
-            <dd>Layouts beyond the three it has been tested on.</dd>
-          </dl>
+          <h3 class="limits-title">Not yet</h3>
+          <ul class="limits">
+            <li>Scanned statements, which need OCR.</li>
+            <li>Statements that print no running balance: those rows stay unchecked rather than pretend.</li>
+            <li>Layouts beyond the three it has been tested on.</li>
+          </ul>
           <p><a class="btn btn-ink" href="https://github.com/victorisaacchinta-eng/ithamar" rel="noopener">Read the source on GitHub</a></p>
         </div>
         <pre class="terminal" aria-label="Terminal output of ithamar audit on the sample statement"><code><span class="t-cmd">pip install git+https://github.com/victorisaacchinta-eng/ithamar</span>
@@ -230,7 +205,8 @@
   </main>
 
   <footer class="foot">
-    <p>Ithamar is open source under the MIT licence. Built by <a href="https://github.com/victorisaacchinta-eng">Victor Isaac</a>.</p>
+    <p class="foot-mark">Ithamar</p>
+    <p>Open source under the MIT licence. Built by <a href="https://github.com/victorisaacchinta-eng">Victor Isaac</a>.</p>
     <p>Every bank, person and transaction on this page is fictional.</p>
   </footer>
 
