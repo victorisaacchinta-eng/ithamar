@@ -22,7 +22,7 @@ function onScroll() {
 window.addEventListener("scroll", onScroll, { passive: true });
 window.addEventListener("resize", onScroll);
 
-// The hero seal is the sample statement's own: drawn from the same audit the story walks through.
+// The hero seal is drawn from the same sample audit the story walks through.
 async function mountHeroSeal() {
   const canvas = document.getElementById("hero-seal") as HTMLCanvasElement | null;
   if (!canvas) return;

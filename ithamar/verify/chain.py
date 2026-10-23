@@ -2,7 +2,7 @@
 
 Every printed row obeys   previous balance + credit - debit = balance.
 Walk that equation down the statement and each row is either proven by
-arithmetic or it is not. Nothing here is a heuristic or a model guess.
+arithmetic or it is not.
 
 When a row does not close, the chain resyncs on the printed balance, so one
 bad cell produces one or two breaks instead of corrupting everything below it.
@@ -71,8 +71,6 @@ class ChainReport:
         return not self.breaks and self.closing_ok is not False
 
 
-# ---------------------------------------------------------------- similarity
-
 def _edit_distance_le1(a: str, b: str) -> bool:
     """True when b is a one-character edit of a, or an adjacent transposition."""
     if a == b:
@@ -107,8 +105,6 @@ def digits_similar(a: int, b: int) -> bool:
     hi, lo = max(a, b), min(a, b)
     return hi in (lo * 10, lo * 100)
 
-
-# ---------------------------------------------------------------- the walk
 
 def _next_checked(txns: list[Transaction], start: int) -> tuple[int | None, int]:
     """Position of the next row at or after `start` that prints a balance, and
