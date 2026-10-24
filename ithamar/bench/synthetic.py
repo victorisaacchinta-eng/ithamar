@@ -167,6 +167,8 @@ def inject(seed: int, rows: list[Row], kinds: list[str]) -> tuple[list[Row], lis
     return printed, record
 
 
+# ---------------------------------------------------------------- rendering
+
 LAYOUTS = {
     "ashoka": {
         "bank": "ASHOKA LEDGER BANK",

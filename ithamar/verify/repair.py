@@ -23,9 +23,9 @@ explain it. This module decides which, if any, to apply. The rules:
    after a change is a different claim from proven as printed, and the
    report keeps them apart.
 
-Not done yet: when no rule closes the window, widen it, try merged or split
+Stretch (V2): when no rule closes the window, widen it, try merged or split
 rows, then ask a local model (Ollama) for a JSON correction. The model's
-answer would be a hypothesis like any other: it must make the chain close.
+answer is a hypothesis like any other: it must make the chain close.
 """
 
 from __future__ import annotations

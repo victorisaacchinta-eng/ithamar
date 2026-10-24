@@ -1,7 +1,7 @@
 """Score the engine against statements whose truth is known.
 
-The number that matters is false-verified rows: rows marked verified or
-repaired whose values differ from the truth. It must stay at zero.
+Headline metric: FALSE-VERIFIED rows. A row marked verified or repaired whose
+values differ from the truth. It must stay at zero; everything else is detail.
 """
 
 from __future__ import annotations

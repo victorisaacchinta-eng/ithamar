@@ -1,5 +1,5 @@
 // Indian money parsing. Every amount becomes integer paise; floats never touch money.
-// Port of ithamar/money.py. Keep the two in step: scripts/parity.ts checks them.
+// Port of ithamar/money.py. Keep the two in step: tests/parity.ts checks them.
 
 const AMOUNT = /^\(?(?:INR|Rs\.?|₹)?\s*(-)?(\d{1,3}(?:,\d{2,3})*|\d+)\.(\d{2})\)?\s*(Cr|Dr|CR|DR|cr|dr)?\.?$/;
 

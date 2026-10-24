@@ -1,5 +1,5 @@
-/* Ithamar site styles. The look borrows from cheque security printing.
-   Colours and where each was sampled from:
+/* Ithamar. A statement printed on security paper.
+   Materials, each colour sampled from its source:
    - tint      the pantograph tint of an Indian CTS-2010 cheque leaf (SBI's pale cyan)
    - paper     the cheque's white clear band, where the MICR line is printed
    - ink       magnetic MICR ink, a blue-black
@@ -70,7 +70,7 @@ h1, h2, h3 { margin: 0; text-wrap: balance; }
 .skip { position: absolute; left: 12px; top: -48px; z-index: 50; background: var(--ink); color: var(--paper); padding: 10px 14px; font-size: 15px; }
 .skip:focus { top: 12px; }
 
-/* buttons */
+/* ------------------------------------------------------------ buttons */
 .btn {
   display: inline-flex; align-items: center; justify-content: center;
   min-height: 48px; padding: 0 24px;
@@ -91,7 +91,7 @@ h1, h2, h3 { margin: 0; text-wrap: balance; }
 }
 @media (hover: hover) and (pointer: fine) { .btn-text:hover { text-decoration-color: currentColor; } }
 
-/* nav */
+/* ------------------------------------------------------------ nav */
 .nav {
   position: sticky; top: 0; z-index: 30;
   display: flex; align-items: center; justify-content: space-between;
@@ -106,7 +106,7 @@ h1, h2, h3 { margin: 0; text-wrap: balance; }
 @media (hover: hover) and (pointer: fine) { .nav-links a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.4em; } }
 @media (max-width: 560px) { .nav-links a:first-child { display: none; } }
 
-/* hero */
+/* ------------------------------------------------------------ the leaf (hero) */
 .leaf {
   position: relative;
   min-height: calc(100svh - 64px);
@@ -150,7 +150,7 @@ h1, h2, h3 { margin: 0; text-wrap: balance; }
 }
 .band-sum { margin-left: auto; color: var(--ink-soft); }
 
-/* story */
+/* ------------------------------------------------------------ story */
 .story {
   display: grid; grid-template-columns: minmax(280px, 4fr) 7fr; gap: clamp(24px, 4vw, 72px);
   padding: clamp(64px, 9vw, 120px) var(--gutter) 0; max-width: 1560px; margin: 0 auto;
@@ -176,7 +176,7 @@ h1, h2, h3 { margin: 0; text-wrap: balance; }
 .story-ledger { position: relative; }
 .story-ledger .ledger { position: sticky; top: 84px; height: calc(100svh - 108px); }
 
-/* ledger table */
+/* ------------------------------------------------------------ the ledger, printed like a statement */
 .ledger {
   --c-date: 76px; --c-money: minmax(96px, 1.2fr); --c-bal: minmax(118px, 1.45fr); --c-mark: 40px;
   --cols: var(--c-date) minmax(0, 3fr) var(--c-money) var(--c-money) var(--c-bal) var(--c-mark);
@@ -259,10 +259,10 @@ h1, h2, h3 { margin: 0; text-wrap: balance; }
 .ledger-eq[data-state="broken"] .eq-res { background: var(--broken); color: var(--paper); }
 .ledger-eq[data-state="fixed"] .eq-res { background: var(--repair); color: var(--paper); }
 
-/* sections */
+/* ------------------------------------------------------------ sections */
 .section-title { font-family: var(--display);  font-size: clamp(44px, 6vw, 100px); line-height: 0.92; font-weight: 860; font-stretch: 125%; letter-spacing: -0.025em; text-transform: uppercase; }
 
-/* proof section, dark background */
+/* The proof, on a field of MICR ink. */
 .proof { background: var(--ink); color: var(--on-ink); }
 .proof-inner {
   max-width: 1560px; margin: 0 auto; padding: clamp(88px, 12vw, 168px) var(--gutter);
@@ -279,7 +279,7 @@ h1, h2, h3 { margin: 0; text-wrap: balance; }
 .facts dt { font-size: 52px; line-height: 0.9; font-weight: 880; font-stretch: 125%; color: var(--paper); font-variant-numeric: tabular-nums lining-nums; }
 .facts dd { margin: 0; color: var(--on-ink-soft); font-size: 16px; line-height: 1.45; }
 
-/* tool */
+/* ------------------------------------------------------------ tool */
 .tool-wrap { background: var(--paper); }
 .tool { max-width: 1560px; margin: 0 auto; padding: clamp(88px, 12vw, 168px) var(--gutter) clamp(72px, 9vw, 128px); }
 .tool-head { display: grid; grid-template-columns: 7fr 5fr; gap: 24px var(--gutter); align-items: end; margin-bottom: 44px; }
@@ -330,7 +330,7 @@ h1, h2, h3 { margin: 0; text-wrap: balance; }
 .notes .n-left { color: var(--broken); font-weight: 600; }
 .notes .n-alt { display: block; color: var(--ink-soft); font-weight: 420; font-size: 15px; margin-top: 4px; }
 
-/* name section, violet background */
+/* ------------------------------------------------------------ name, on the stamp-pad violet */
 .name { background: var(--repair); color: var(--paper); position: relative; overflow: hidden; }
 .name-inner { position: relative; max-width: 1560px; margin: 0 auto; padding: clamp(88px, 12vw, 168px) var(--gutter); display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 36px var(--gutter); }
 .name .section-title { grid-column: 1 / -1; }
@@ -345,7 +345,7 @@ h1, h2, h3 { margin: 0; text-wrap: balance; }
 .sum-total { font-weight: 760; box-shadow: inset 0 2px 0 var(--ink) !important; margin-top: 4px; }
 .sum-total .sum-fig { color: var(--repair); font-weight: 700; }
 
-/* cli */
+/* ------------------------------------------------------------ cli */
 .cli-inner { max-width: 1560px; margin: 0 auto; padding: clamp(88px, 12vw, 168px) var(--gutter); display: grid; grid-template-columns: 5fr 7fr; gap: 48px var(--gutter); align-items: start; }
 .cli-copy p { color: var(--ink-soft); max-width: 46ch; }
 .cli-copy .section-title { margin-bottom: 32px; }
@@ -364,7 +364,7 @@ h1, h2, h3 { margin: 0; text-wrap: balance; }
 .foot p { margin: 0; }
 .foot-mark { font-family: var(--display);  color: var(--paper); font-weight: 880; font-stretch: 125%; text-transform: uppercase; letter-spacing: 0.04em; margin-right: auto !important; }
 
-/* small screens */
+/* ------------------------------------------------------------ small screens */
 @media (max-width: 1100px) {
   .leaf-copy { grid-column: 1 / span 12; }
   .leaf-seal { grid-column: 1 / span 12; grid-row: 3; max-width: 520px; justify-self: start; }
