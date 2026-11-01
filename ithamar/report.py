@@ -65,7 +65,7 @@ def audit(statement: Statement, fix: bool = True) -> tuple[RepairResult, dict]:
 
 
 def write_json(payload: dict, path: str | Path) -> None:
-    Path(path).write_text(json.dumps(payload, indent=1, ensure_ascii=False))
+    Path(path).write_text(json.dumps(payload, indent=1, ensure_ascii=False), encoding="utf-8")
 
 
 def write_csv(payload: dict, path: str | Path) -> None:
