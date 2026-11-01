@@ -36,7 +36,8 @@ def test_csv_has_rupees_blanks_and_decoded_columns(tmp_path):
     _, p = audit(_swapped())
     out = tmp_path / "out.csv"
     write_csv(p, out)
-    rows = list(csv.DictReader(out.open(encoding="utf-8")))
+    with out.open(newline="", encoding="utf-8") as f:
+        rows = list(csv.DictReader(f))
     assert len(rows) == 5
     first = rows[0]
     assert first["credit"] == "5000.00" and first["debit"] == ""
