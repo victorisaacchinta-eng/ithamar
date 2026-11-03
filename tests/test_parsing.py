@@ -16,6 +16,12 @@ from ithamar.parse.layout import classify, join_wrapped
     ("-45.10", -4510, None),
     ("Rs. 500.00", 50_000, None),
     ("₹1,250.00", 125_000, None),
+    ("INR 2,500.00", 250_000, None),
+    ("Rs -75.00", -7500, None),
+    ("(Rs 75.00)", -7500, None),
+    ("1,000.00 cr", 100_000, "Cr"),
+    ("1,000.00 DR.", 100_000, "Dr"),
+    ("12,34,56,789.00", 12_345_678_900, None),
 ])
 def test_amounts(text, paise, marker):
     assert parse_amount(text) == (paise, marker)
@@ -33,6 +39,22 @@ def test_fmt_inr_lakh_grouping():
     assert fmt_inr(100) == "1.00"
     assert fmt_inr(-5_00_000_00) == "-5,00,000.00"
     assert fmt_inr(None) == ""
+
+
+@pytest.mark.parametrize("paise,text", [
+    (0, "0.00"),
+    (-5, "-0.05"),
+    (99_999_99, "99,999.99"),
+    (1_00_000_00, "1,00,000.00"),
+    (-12_34_56_789_00, "-12,34,56,789.00"),
+])
+def test_fmt_inr_boundaries(paise, text):
+    assert fmt_inr(paise) == text
+
+
+@pytest.mark.parametrize("paise", [0, 1, -1, 99_999, 1_00_000_00, -98_76_54_321_09])
+def test_fmt_inr_round_trips_through_parse_amount(paise):
+    assert parse_amount(fmt_inr(paise)) == (paise, None)
 
 
 @pytest.mark.parametrize("text,iso", [
