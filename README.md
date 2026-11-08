@@ -77,13 +77,13 @@ ithamar demo                          # generate synthetic statements and audit 
 ithamar bench samples/ --generate 24  # score the engine against known truth
 ```
 
-`ithamar audit` exits `0` when every row is proven, `1` when rows were repaired, and `2` when a person needs to look, so it can gate a script.
+`ithamar audit` exits `0` when every row is proven, `1` when rows were repaired, and `2` when a person needs to look (including when the PDF is missing, unreadable or the password is wrong), so it can gate a script.
 
 ### Development
 
 ```bash
 pip install -e ".[dev]"
-pytest                       # 63 tests, including property tests (hypothesis)
+pytest                       # 88 tests, including property tests (hypothesis)
 
 cd web && npm install
 npm run dev                  # the site
