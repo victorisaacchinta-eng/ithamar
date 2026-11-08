@@ -5,7 +5,8 @@
   ithamar bench DIR [--generate N]
 
 `audit` exits 0 when every row is proven, 1 when the engine repaired rows
-(proven, but after a correction), 2 when the statement needs a person.
+(proven, but after a correction), 2 when the statement needs a person,
+including when the PDF cannot be opened (missing, not a PDF, wrong password).
 """
 
 from __future__ import annotations
@@ -48,11 +49,30 @@ def _print_audit(payload: dict, out=sys.stdout) -> None:
     w(f"  {verdict}\n\n")
 
 
+def _open_error(exc: Exception, password: str | None) -> str:
+    from pdfminer.pdfdocument import PDFPasswordIncorrect
+
+    cause = exc.args[0] if exc.args else exc
+    if isinstance(cause, PDFPasswordIncorrect):
+        return "wrong password" if password else "the PDF is password protected, pass --password"
+    if isinstance(exc, OSError):
+        return exc.strerror or str(exc)
+    return f"not a readable PDF ({cause})"
+
+
 def cmd_audit(a) -> int:
+    from pdfplumber.utils.exceptions import PdfminerException
+
     from ithamar.parse import parse_pdf
     from ithamar.report import audit, write_csv, write_json
 
-    st = parse_pdf(a.pdf, a.password)
+    try:
+        st = parse_pdf(a.pdf, a.password)
+    except (OSError, PdfminerException) as exc:
+        # An uncaught traceback exits 1, which a gating script would read as
+        # "proven after repair". Fail as "needs a person" instead.
+        print(f"ithamar: cannot open {a.pdf}: {_open_error(exc, a.password)}", file=sys.stderr)
+        return 2
     _, payload = audit(st, fix=not a.no_fix)
     if a.json:
         write_json(payload, a.json)
