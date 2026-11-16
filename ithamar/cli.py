@@ -42,7 +42,12 @@ def _print_audit(payload: dict, out=sys.stdout) -> None:
         w(f"  ✗ row {u['row'] + 1}: {u['reason'].replace('_', ' ')}\n")
         for c in u["candidates"]:
             w(f"      {c['detail']}\n")
-    verdict = "PROVEN" if s["clean"] and not s["repaired"] else "PROVEN AFTER REPAIR" if s["clean"] else "NEEDS REVIEW"
+    if not s["rows"]:
+        verdict = "NEEDS REVIEW (no transactions found)"
+    elif s["clean"]:
+        verdict = "PROVEN AFTER REPAIR" if s["repaired"] else "PROVEN"
+    else:
+        verdict = "NEEDS REVIEW"
     w(f"\n  {s['verified']}/{s['rows']} proven as printed, {s['repaired']} repaired, {s['broken']} broken, "
       f"{s['unchecked']} unchecked. Closing balance {'matches' if s['closing_ok'] else 'not confirmed' if s['closing_ok'] is None else 'DOES NOT MATCH'}.\n")
     w(f"  {verdict}\n\n")
@@ -61,6 +66,11 @@ def cmd_audit(a) -> int:
     if not a.quiet:
         _print_audit(payload)
     s = payload["summary"]
+    if not s["rows"]:
+        # An empty chain has no breaks, so it reads as clean. Nothing was
+        # proven, so it must not exit 0.
+        print(f"ithamar: no transactions found in {a.pdf}", file=sys.stderr)
+        return 2
     if s["clean"] and not s["repaired"]:
         return 0
     return 1 if s["clean"] else 2
