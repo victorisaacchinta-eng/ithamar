@@ -68,6 +68,19 @@ def write_json(payload: dict, path: str | Path) -> None:
     Path(path).write_text(json.dumps(payload, indent=1, ensure_ascii=False), encoding="utf-8")
 
 
+# A cell starting with one of these runs as a formula in Excel or Sheets.
+_FORMULA_PREFIXES = ("=", "+", "-", "@", "\t", "\r")
+# Text taken from the bank PDF. Money columns stay numeric, so "-500.00" is untouched.
+_TEXT_FIELDS = ("narration", "ref", "vpa", "counterparty")
+
+
+def _csv_safe(value: str) -> str:
+    """Quote a text cell that a spreadsheet would run as a formula (CSV injection)."""
+    if isinstance(value, str) and value.startswith(_FORMULA_PREFIXES):
+        return "'" + value
+    return value
+
+
 def write_csv(payload: dict, path: str | Path) -> None:
     fields = ["index", "date", "value_date", "narration", "ref", "debit", "credit", "balance",
               "status", "rail", "vpa", "rrn", "utr", "counterparty"]
@@ -81,4 +94,6 @@ def write_csv(payload: dict, path: str | Path) -> None:
             for k in ("debit", "credit", "balance"):  # CSV gets rupees, JSON keeps paise
                 if r[k] is not None:
                     row[k] = f"{r[k] / 100:.2f}"
+            for k in _TEXT_FIELDS:
+                row[k] = _csv_safe(row[k])
             w.writerow(row)

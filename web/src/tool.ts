@@ -230,11 +230,14 @@ function toCsv(a: Audit): string {
     const s = v === null || v === undefined ? "" : String(v);
     return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
   };
+  // Text from the bank PDF that a spreadsheet would run as a formula gets a leading quote,
+  // same rule as ithamar/report.py. Money columns are left alone so "-500.00" stays numeric.
+  const safe = (s: string) => (/^[=+\-@\t\r]/.test(s) ? "'" + s : s);
   const rupees = (p: number | null) => (p === null ? "" : (p / 100).toFixed(2));
   const lines = [cols.join(",")];
   for (const r of a.rows) {
-    lines.push([r.index + 1, r.date, r.narration, rupees(r.debit), rupees(r.credit), rupees(r.balance), r.status,
-      r.decoded.rail, r.decoded.counterparty, r.decoded.vpa, r.decoded.rrn, r.decoded.utr].map(q).join(","));
+    lines.push([r.index + 1, r.date, safe(r.narration), rupees(r.debit), rupees(r.credit), rupees(r.balance), r.status,
+      r.decoded.rail, safe(r.decoded.counterparty), safe(r.decoded.vpa), r.decoded.rrn, r.decoded.utr].map(q).join(","));
   }
   return lines.join("\n") + "\n";
 }
