@@ -55,3 +55,34 @@ def test_json_round_trips_and_keeps_paise(tmp_path):
     back = json.loads(out.read_text(encoding="utf-8"))
     assert back == p
     assert back["rows"][1]["debit"] == 1_234_50
+
+
+def test_csv_quotes_formula_text_but_not_money(tmp_path):
+    s = ledger([5_000_00, -1_234_50, -200_00], opening=-10_000_00)  # overdrawn, so balances are negative
+    s.transactions[0].narration = '=HYPERLINK("http://x.example","Refund")'
+    s.transactions[1].narration = "@SUM(A1:A9)"
+    s.transactions[1].ref = "+91000"
+    s.transactions[2].narration = "-cmd|' /C calc'!A0"
+    _, p = audit(s)
+    p["rows"][2]["decoded"]["counterparty"] = "\tTAB LTD"
+    out = tmp_path / "out.csv"
+    write_csv(p, out)
+    with out.open(newline="", encoding="utf-8") as f:
+        rows = list(csv.DictReader(f))
+    assert rows[0]["narration"] == "'" + '=HYPERLINK("http://x.example","Refund")'
+    assert rows[1]["narration"] == "'@SUM(A1:A9)" and rows[1]["ref"] == "'+91000"
+    assert rows[2]["narration"].startswith("'-cmd")
+    assert rows[2]["counterparty"] == "'\tTAB LTD"
+    assert rows[0]["balance"] == "-5000.00"  # money stays numeric
+    assert rows[1]["debit"] == "1234.50" and rows[2]["balance"] == "-6434.50"
+    assert p["rows"][0]["narration"].startswith("=")  # the JSON payload is unchanged
+
+
+def test_csv_leaves_ordinary_text_alone(tmp_path):
+    _, p = audit(_swapped())
+    out = tmp_path / "out.csv"
+    write_csv(p, out)
+    with out.open(newline="", encoding="utf-8") as f:
+        first = next(csv.DictReader(f))
+    assert first["narration"] == "UPI/412345678901/RENT/ravi.kumar@okaxis/RAVI KUMAR"
+    assert first["vpa"] == "ravi.kumar@okaxis"
